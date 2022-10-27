@@ -1,38 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;800&display=swap');
+
+:root {
+	--primary-mblue: hsl(238, 40%, 52%);
+	--primary-sred: hsl(358, 79%, 66%);
+	--primary-lgblue: hsl(239, 57%, 85%);
+	--primary-pred: hsl(357, 100%, 86%);
+	--neutral-dblue: hsl(212, 24%, 26%);
+	--neutral-gblue: hsl(211, 10%, 45%);
+	--neutral-lgray: hsl(223, 19%, 93%);
+	--neutral-vlgray: hsl(228, 33%, 97%);
+	--neutral-white: hsl(0, 0%, 100%);
+}
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
 .App {
-  text-align: center;
+	min-height: 100vh;
+	background-color: var(--neutral-lgray);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	font-family: 'Rubik', sans-serif;
+	font-size: 16px;
+
+	position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+main {
+	margin: 2rem 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.text-purple {
+	color: var(--primary-mblue);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.text-dark {
+	color: var(--neutral-dblue);
 }
 
-.App-link {
-  color: #61dafb;
+.text-gray {
+	color: var(--neutral-gblue);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.text-red {
+	color: var(--primary-sred);
+}
+
+.container {
+	width: 90%;
+	margin-inline: auto;
+	max-width: 55rem;
 }

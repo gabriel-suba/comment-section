@@ -1,0 +1,42 @@
+.replies-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	margin-top: 1.77rem;
+	margin-left: 2.77rem;
+	padding-left: 3rem;
+	border-left: 2px solid rgb(220, 220, 220);
+}
+
+.reply {
+	display: flex;
+	gap: 1.7rem;
+
+	background-color: white;
+	padding: 1.5rem;
+	border-radius: 0.66rem;
+
+	position: relative;
+}
+
+@media screen and (max-width: 640px) {
+	.replies-container {
+		margin-left: 0.5rem;
+		padding-left: 1.5rem;
+	}
+
+	.reply {
+		flex-direction: column-reverse;
+		align-items: flex-start;
+	}
+
+	.vote-container {
+		flex-direction: row;
+	}
+
+	.btn-container {
+		top: auto;
+		bottom: 40px;
+	}
+}

@@ -1,0 +1,75 @@
+.user-reply {
+	display: none;
+}
+
+.open-reply ~ .user-reply {
+	display: flex;
+	align-items: flex-start;
+	gap: 1rem;
+
+	background-color: var(--neutral-white);
+	padding: 1.5rem;
+	margin-top: 0.5rem;
+	border-radius: 0.66rem;
+}
+
+.user-reply .submit-reply-btn {
+	flex: 1;
+
+	background-color: var(--primary-mblue);
+	color: var(--neutral-white);
+	padding: 1rem;
+
+	border: none;
+	outline: none;
+	border-radius: 0.66rem;
+
+	font-family: inherit;
+	text-align: center;
+	text-transform: uppercase;
+
+	cursor: pointer;
+}
+
+.user-reply .submit-reply-btn:hover {
+	background-color: var(--primary-lgblue);
+}
+
+.user-reply textarea {
+	flex: 4;
+
+	padding: 1rem;
+	border-radius: 0.66rem;
+	border: 1px solid var(--neutral-lgray);
+	outline: none;
+
+	resize: none;
+
+	font-size: 1rem;
+	font-family: inherit;
+}
+
+.user-reply textarea:focus {
+	border: 1px solid var(--primary-mblue);
+}
+
+.replyingTo {
+	color: var(--primary-mblue);
+	margin-right: 0.3rem;
+	font-weight: 700;
+}
+
+@media screen and (max-width: 640px) {
+	.open-reply ~ .user-reply {
+		align-items: initial;
+		flex-direction: column-reverse;
+
+		position: relative;
+	}
+
+	.submit-reply-btn {
+		position: absolute;
+		right: 1.5rem;
+		bottom: 1.5rem;
+	}
+}
