@@ -1,8 +1,8 @@
-.user-reply {
+/* .user-reply {
 	display: none;
-}
+} */
 
-.open-reply ~ .user-reply {
+.user-reply {
 	display: flex;
 	align-items: flex-start;
 	gap: 1rem;
@@ -37,20 +37,6 @@
 
 .user-reply textarea {
 	flex: 4;
-
-	padding: 1rem;
-	border-radius: 0.66rem;
-	border: 1px solid var(--neutral-lgray);
-	outline: none;
-
-	resize: none;
-
-	font-size: 1rem;
-	font-family: inherit;
-}
-
-.user-reply textarea:focus {
-	border: 1px solid var(--primary-mblue);
 }
 
 .replyingTo {
@@ -60,7 +46,7 @@
 }
 
 @media screen and (max-width: 640px) {
-	.open-reply ~ .user-reply {
+	.user-reply {
 		align-items: initial;
 		flex-direction: column-reverse;
 
