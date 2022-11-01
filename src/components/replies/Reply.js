@@ -40,6 +40,30 @@ const Reply = ({ comment, reply, handleOpenModal }) => {
 		handleToggleEdit()
 	}
 
+	function handleVote(e) {
+		const { target: { name } } = e
+		
+		
+		const temp = comments.map(i => {
+			if (i.id === comment.id) {
+				const toUpdate = i.replies.map(j => {
+					if (j.id === reply.id) {
+						const operation = name === "plus" ? (j.score + 1) : (j.score - 1)
+						return { ...j, score: operation }
+					} else {
+						return j
+					}
+				})
+				
+				return { ...i, replies: [...toUpdate] }
+			} else {
+				return i
+			}
+		})
+
+		setComments(temp)
+	}
+
 	return (
 		<div className="wrapper">
 			<div className={`reply ${openReply ? 'open-reply' : ''}`}>
@@ -64,9 +88,9 @@ const Reply = ({ comment, reply, handleOpenModal }) => {
 				}
 
 				<div className="vote-container">
-					<img className="plus-icon" src="../images/icon-plus.svg" alt="an icon of a plus button" />
+					<img onClick={handleVote} name="plus" className="plus-icon" src="../images/icon-plus.svg" alt="an icon of a plus button" />
 					<span className="text-purple vote">{reply.score}</span>
-					<img className="minus-icon" src="../images/icon-minus.svg" alt="an icon of a minus button" />
+					<img onClick={handleVote} name="minus" className="minus-icon" src="../images/icon-minus.svg" alt="an icon of a minus button" />
 				</div>
 
 				<div className="body">

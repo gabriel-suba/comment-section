@@ -4,11 +4,26 @@ import UserReply from "../userReply/UserReply"
 import Replies from '../replies/Replies'
 
 const Comment = ({ comment, handleOpenModal }) => {
-	const { user } = useContext(DataContext)
+	const { user, comments, setComments } = useContext(DataContext)
 	const [openReply, setOpenReply] = useState(false)
 
 	function handleToggleReply() {
 		setOpenReply(prev => !prev)
+	}
+
+	function handleVote(e) {
+		const { target: { name } } = e
+		
+		const operation = name === "plus" ? (comment.score + 1) : (comment.score - 1)
+		const temp = comments.map(i => {
+			if (i.id === comment.id) {
+				return { ...i, score: operation }
+			} else {
+				return i
+			}
+		})
+
+		setComments(temp)
 	}
 
 	return (
@@ -22,9 +37,9 @@ const Comment = ({ comment, handleOpenModal }) => {
 				</div>
 
 				<div className="vote-container">
-					<img className="plus-icon" src="../images/icon-plus.svg" alt="an icon of a plus button" />
+					<img onClick={handleVote} name="plus" className="plus-icon" src="../images/icon-plus.svg" alt="an icon of a plus button" />
 					<span className="text-purple vote">{comment.score}</span>
-					<img className="minus-icon" src="../images/icon-minus.svg" alt="an icon of a minus button" />
+					<img onClick={handleVote} name="minus" className="minus-icon" src="../images/icon-minus.svg" alt="an icon of a minus button" />
 				</div>
 
 				<div className="body">
@@ -48,7 +63,7 @@ const Comment = ({ comment, handleOpenModal }) => {
 
 			{comment.replies.length > 0 && 
 			<Replies 
-			comment={comment} 
+			comment={comment}
 			handleOpenModal={handleOpenModal}
 			/> 
 			}
