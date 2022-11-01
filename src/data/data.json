@@ -5,8 +5,7 @@
       "webp": "./images/avatars/image-juliusomo.webp"
     },
     "username": "juliusomo",
-    "upvotes": [],
-    "downvotes": []
+    "votes": []
   },
   "comments": [
     {

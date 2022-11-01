@@ -35,6 +35,10 @@
 	filter: invert(80%) sepia(15%) saturate(649%) hue-rotate(201deg) brightness(98%) contrast(92%);
 }
 
+.voted {
+	filter: invert(80%) sepia(15%) saturate(649%) hue-rotate(201deg) brightness(98%) contrast(92%);
+}
+
 .btn-icon {
 	width: auto;
 	height: 13px;

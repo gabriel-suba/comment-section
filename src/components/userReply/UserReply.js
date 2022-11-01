@@ -10,8 +10,9 @@ const UserReply = ({ comment, toUsername, setOpenReply }) => {
 		e.preventDefault()
 
 		const processedContent = textEl.current.value.split(" ").slice(1).join(" ")
+		const id = Date.now()
 		const payload = {
-			id: Math.floor(Math.random() * 100) + comment.replies.length,
+			id: id,
 			content: processedContent,
 			createdAt: "1 second ago",
 			score: 1,
