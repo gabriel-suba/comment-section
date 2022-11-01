@@ -27,7 +27,8 @@ const UserReply = ({ comment, toUsername, setOpenReply }) => {
 			}
 		})
 
-		setComments(temp)
+		localStorage.setItem('comments', JSON.stringify(temp))
+		setComments(JSON.parse(localStorage.getItem('comments')))
 		
 		textEl.current.value = `@${comment.user.username}`
 		setOpenReply(prev => !prev)

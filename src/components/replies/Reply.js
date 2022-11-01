@@ -36,13 +36,14 @@ const Reply = ({ comment, reply, handleOpenModal }) => {
 			}
 		})
 
-		setComments(temp)
+		localStorage.setItem('comments', JSON.stringify(temp))
+		setComments(JSON.parse(localStorage.getItem('comments')))
+
 		handleToggleEdit()
 	}
 
 	function handleVote(e) {
 		const { target: { name } } = e
-		
 		
 		const temp = comments.map(i => {
 			if (i.id === comment.id) {
@@ -61,7 +62,8 @@ const Reply = ({ comment, reply, handleOpenModal }) => {
 			}
 		})
 
-		setComments(temp)
+		localStorage.setItem('comments', JSON.stringify(temp))
+		setComments(JSON.parse(localStorage.getItem('comments')))
 	}
 
 	return (

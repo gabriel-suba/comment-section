@@ -21,7 +21,8 @@ const Modal = forwardRef((props, ref) => {
 			}
 		})
 
-		setComments(temp)
+		localStorage.setItem('comments', JSON.stringify(temp))
+		setComments(JSON.parse(localStorage.getItem('comments')))
 		handleCloseModal()
 	}
 

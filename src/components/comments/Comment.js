@@ -22,8 +22,9 @@ const Comment = ({ comment, handleOpenModal }) => {
 				return i
 			}
 		})
-
-		setComments(temp)
+		
+		localStorage.setItem('comments', JSON.stringify(temp))
+		setComments(JSON.parse(localStorage.getItem('comments')))
 	}
 
 	return (
