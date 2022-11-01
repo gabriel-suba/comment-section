@@ -1,10 +1,11 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useContext } from 'react'
+import { DataContext } from '../../contexts/dataContext'
 import UserReply from '../userReply/UserReply'
 
-const Reply = ({ comment, reply, user, comments, setComments, handleOpenModal }) => {
+const Reply = ({ comment, reply, handleOpenModal }) => {
+	const { user, comments, setComments } = useContext(DataContext)
 	const [openReply, setOpenReply] = useState(false)
 	const [edit, setEdit] = useState(false)
-
 	const textEl = useRef(null)
 
 	function handleToggleEdit() {

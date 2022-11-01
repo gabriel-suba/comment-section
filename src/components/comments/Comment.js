@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { DataContext } from '../../contexts/dataContext'
 import UserReply from "../userReply/UserReply"
 import Replies from '../replies/Replies'
 
-const Comment = ({ comment, user, comments, setComments, handleOpenModal }) => {
+const Comment = ({ comment, handleOpenModal }) => {
+	const { user } = useContext(DataContext)
 	const [openReply, setOpenReply] = useState(false)
 
 	function handleToggleReply() {
@@ -47,9 +49,6 @@ const Comment = ({ comment, user, comments, setComments, handleOpenModal }) => {
 			{comment.replies.length > 0 && 
 			<Replies 
 			comment={comment} 
-			user={user}
-			comments={comments}
-			setComments={setComments}
 			handleOpenModal={handleOpenModal}
 			/> 
 			}
@@ -58,9 +57,6 @@ const Comment = ({ comment, user, comments, setComments, handleOpenModal }) => {
 			<UserReply 
 			comment={comment} 
 			toUsername={comment.user.username}
-			user={user}
-			comments={comments}
-			setComments={setComments}
 			setOpenReply={setOpenReply}
 			/>
 			}

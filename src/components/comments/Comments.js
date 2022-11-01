@@ -1,16 +1,17 @@
+import { useContext } from 'react'
+import { DataContext } from '../../contexts/dataContext'
 import Comment from './Comment'
 import './comments.css'
 
-const Comments = ({ comments, user, setComments, handleSubmitReply, handleOpenModal }) => {
+const Comments = ({ handleSubmitReply, handleOpenModal }) => {
+	const { comments } = useContext(DataContext)
+
 	return (
 		<div className="comments-container">
 			{comments && comments.map(comment => (
 				<Comment 
 				key={comment.id}
 				comment={comment} 
-				user={user}
-				comments={comments}
-				setComments={setComments}
 				handleSubmitReply={handleSubmitReply}
 				handleOpenModal={handleOpenModal}
 				/>

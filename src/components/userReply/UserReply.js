@@ -1,7 +1,9 @@
-import { useRef } from 'react'
+import { useRef, useContext } from 'react'
+import { DataContext } from '../../contexts/dataContext'
 import './userReply.css'
 
-const UserReply = ({ comment, toUsername, user, comments, setComments, setOpenReply }) => {
+const UserReply = ({ comment, toUsername, setOpenReply }) => {
+	const { user, comments, setComments } = useContext(DataContext)
 	const textEl = useRef(null)
 
 	function handleSubmitReply(e) {

@@ -1,7 +1,7 @@
 import Reply from './Reply';
 import './replies.css'
 
-const Replies = ({ comment, user, comments, setComments, handleOpenModal }) => {
+const Replies = ({ comment, handleOpenModal }) => {
 	return (
 		<div className="replies-container">
 			{comment.replies.map(reply => (
@@ -9,9 +9,6 @@ const Replies = ({ comment, user, comments, setComments, handleOpenModal }) => {
 			key={reply.id}
 			comment={comment}
 			reply={reply}
-			user={user}
-			comments={comments}
-			setComments={setComments}
 			handleOpenModal={handleOpenModal}
 			/>
 			))}
