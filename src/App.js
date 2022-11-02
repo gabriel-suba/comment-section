@@ -3,7 +3,7 @@ import { DataContext } from './contexts/dataContext'
 import Comments from './components/comments/Comments'
 import Login from './components/login/Login'
 import Modal from './components/modal/Modal'
-import './app.css'
+import './App.css'
 
 const App = () => {
 	const { loggedIn, loading } = useContext(DataContext)
