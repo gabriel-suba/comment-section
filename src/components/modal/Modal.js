@@ -1,9 +1,8 @@
-import { forwardRef, useContext } from 'react'
-import { DataContext } from '../../contexts/dataContext'
+import { forwardRef } from 'react'
+import { deleteDocument } from '../../fb'
 import './modal.css'
 
 const Modal = forwardRef((props, ref) => {
-	const { comments, setComments } = useContext(DataContext)
 	const { selected, setSelected } = props
 
 	function handleCloseModal() {
@@ -11,18 +10,8 @@ const Modal = forwardRef((props, ref) => {
 		setSelected({ commentId: null, idToDelete: null })
 	}
 
-	function handleDeleteReply() {
-		const temp = comments.map(item => {
-			if (item.id === selected.commentId) {
-				const replies = item.replies.filter(i => i.id !== selected.idToDelete)
-				return { ...item, replies: [...replies] }
-			} else {
-				return item
-			}
-		})
-
-		localStorage.setItem('comments', JSON.stringify(temp))
-		setComments(JSON.parse(localStorage.getItem('comments')))
+	async function handleDeleteReply() {
+		await deleteDocument(selected.collection, selected.docId)
 		handleCloseModal()
 	}
 

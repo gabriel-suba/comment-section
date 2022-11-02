@@ -1,17 +1,19 @@
 import { useContext } from 'react'
 import { DataContext } from '../../contexts/dataContext'
+import AddComment from './AddComment'
 import Comment from './Comment'
 import './comments.css'
 
 const Comments = ({ handleSubmitReply, handleOpenModal }) => {
-	const { comments } = useContext(DataContext)
+	const { posts } = useContext(DataContext)
 
 	return (
 		<div className="comments-container">
-			{comments && comments.map(comment => (
+			<AddComment />
+			{posts && posts.map(post => (
 				<Comment 
-				key={comment.id}
-				comment={comment} 
+				key={post.id}
+				post={post} 
 				handleSubmitReply={handleSubmitReply}
 				handleOpenModal={handleOpenModal}
 				/>

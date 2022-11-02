@@ -1,26 +1,30 @@
-import { useState, useRef } from 'react'
-import { DataProvider } from './contexts/dataContext'
+import { useState, useRef, useContext } from 'react'
+import { DataContext } from './contexts/dataContext'
 import Comments from './components/comments/Comments'
+import Login from './components/login/Login'
 import Modal from './components/modal/Modal'
 import './app.css'
 
 const App = () => {
-	const [selected, setSelected] = useState({ commentId: null, idToDelete: null })
+	const { loggedIn, loading } = useContext(DataContext)
+	const [selected, setSelected] = useState({ collection: null, docId: null })
 	const modalRef = useRef(null)
 
-	function handleOpenModal(commentId, idToDelete) {
+	function handleOpenModal(collection, docId) {
 		modalRef.current.classList.toggle('open-modal')
-		setSelected({ commentId, idToDelete })
+		setSelected({ collection: collection, docId: docId })
 	}
+
+	if (loading) return <div className="App"><div>loading...</div></div>
+
+	if (!loggedIn) return <div className="App"><Login /></div>
 	
 	return (
 		<div className="App">
-			<DataProvider>
-				<Modal ref={modalRef} selected={selected} setSelected={setSelected} />
-				<main className="container">
-					<Comments handleOpenModal={handleOpenModal} />
-				</main>
-			</DataProvider>
+			<Modal ref={modalRef} selected={selected} setSelected={setSelected} />
+			<main className="container">
+				<Comments handleOpenModal={handleOpenModal} />
+			</main>
 		</div>
 	);
 }
