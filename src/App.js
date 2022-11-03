@@ -3,6 +3,7 @@ import { DataContext } from './contexts/dataContext'
 import Comments from './components/comments/Comments'
 import Login from './components/login/Login'
 import Modal from './components/modal/Modal'
+import Nav from './components/nav/Nav'
 import './App.css'
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
 	
 	return (
 		<div className="App">
+			<Nav />
 			<Modal ref={modalRef} selected={selected} setSelected={setSelected} />
 			<main className="container">
 				<Comments handleOpenModal={handleOpenModal} />
