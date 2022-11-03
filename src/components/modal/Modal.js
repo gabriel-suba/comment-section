@@ -8,11 +8,19 @@ const Modal = forwardRef((props, ref) => {
 
 	function handleCloseModal() {
 		ref.current.classList.toggle('open-modal')
-		setSelected({ commentId: null, idToDelete: null })
+		setSelected({ commentId: null, idToDelete: null, replies: [] })
 	}
 
 	async function handleDeleteReply() {
 		await deleteDocument(selected.collection, selected.docId)
+
+		if (selected.replies.length > 0) {
+			for (let i = 0; i < selected.replies.length; i++) {
+				const reply = selected.replies[i]
+				console.log(reply.id)
+				await deleteDocument('replies', reply.id)
+			}
+		}
 		handleCloseModal()
 	}
 

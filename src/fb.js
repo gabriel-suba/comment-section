@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { doc, updateDoc, deleteDoc, getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -56,6 +56,10 @@ export async function updateUserProfile(user, toUpdate) {
 
 		return { error: { code: errorCode, msg: errorMessage } }
 	}
+}
+
+export async function logOut() {
+	await signOut(auth)
 }
 
 export async function deleteDocument(collection, docId) {

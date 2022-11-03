@@ -7,12 +7,12 @@ import './App.css'
 
 const App = () => {
 	const { loggedIn, loading } = useContext(DataContext)
-	const [selected, setSelected] = useState({ collection: null, docId: null })
+	const [selected, setSelected] = useState({ collection: null, docId: null, replies: [] })
 	const modalRef = useRef(null)
 
-	function handleOpenModal(collection, docId) {
+	function handleOpenModal(collection, docId, replies = []) {
 		modalRef.current.classList.toggle('open-modal')
-		setSelected({ collection: collection, docId: docId })
+		setSelected({ collection: collection, docId: docId, replies: replies })
 	}
 
 	if (loading) return <div className="App"><div>loading...</div></div>

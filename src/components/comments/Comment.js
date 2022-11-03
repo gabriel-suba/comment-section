@@ -114,7 +114,7 @@ const Comment = ({ post, handleOpenModal }) => {
 			<div className="comment">
 				{(post.username === user.username) ? 
 				<div className="btn-container">
-					<div onClick={() => handleOpenModal('posts', post.id)} className="btn">
+					<div onClick={() => handleOpenModal('posts', post.id, replies)} className="btn">
 						<img className="delete-icon btn-icon" src="../images/icon-delete.svg" alt="an icon of a reply button" />
 						<span className="text-red">Delete</span>
 					</div>
