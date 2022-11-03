@@ -2,6 +2,7 @@ import { forwardRef } from 'react'
 import { deleteDocument } from '../../fb'
 import './modal.css'
 
+
 const Modal = forwardRef((props, ref) => {
 	const { selected, setSelected } = props
 

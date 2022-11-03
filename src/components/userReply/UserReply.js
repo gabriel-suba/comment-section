@@ -7,6 +7,8 @@ import './userReply.css'
 const UserReply = ({ commentId, toUsername, setOpenReply }) => {
 	const { user } = useContext(DataContext)
 	const [content, setContent] = useState(`@${toUsername} `)
+	const [error, setError] = useState(null)
+	const [loading, setLoading] = useState(false)
 
 	function handleChange(e) {
 		const { target: { value } } = e
@@ -16,8 +18,15 @@ const UserReply = ({ commentId, toUsername, setOpenReply }) => {
 	async function handleSubmitReply(e) {
 		e.preventDefault()
 
+		const processedContent = content.split(" ").slice(1).join(" ")
+
+		if (processedContent.length <=0) {
+			setError('Text cannot be empty')
+			return
+		}
+
 		try {
-			const processedContent = content.split(" ").slice(1).join(" ")
+			setLoading(true)
 
 			const payload = {
 				commentId: commentId,
@@ -34,6 +43,8 @@ const UserReply = ({ commentId, toUsername, setOpenReply }) => {
 			await addDoc(collectionRef, payload)
 
 			setContent(`@${toUsername} `)
+			setError(null)
+			setLoading(false)
 			setOpenReply(prev => !prev)
 		} catch (err) {
 			console.error('Error adding document: ', err);
@@ -52,7 +63,8 @@ const UserReply = ({ commentId, toUsername, setOpenReply }) => {
 			onChange={handleChange}
 			value={content} 
 			/>
-			<button className="submit-reply-btn">Reply</button>
+			{ error && <span className="text-red">{error}</span> }
+			<button className="submit-reply-btn" disabled={loading}>Reply</button>
 		</form>
 	);
 }

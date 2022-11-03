@@ -6,6 +6,8 @@ import { DataContext } from '../../contexts/dataContext'
 const AddComment = () => {
 	const { user } = useContext(DataContext)
 	const [post, setPost] = useState('')
+	const [error, setError] = useState(null)
+	const [loading, setLoading] = useState(false)
 
 	function handleChange(e) {
 		const { target: { value } } = e
@@ -15,7 +17,13 @@ const AddComment = () => {
 	async function handleSubmit(e) {
 		e.preventDefault()
 
+		if (post.length <=0) {
+			setError('Text cannot be empty')
+			return
+		}
+		
 		try {
+			setLoading(true)
 			const collectionRef = collection(db, 'posts')
 			const payload = {
 				content: post,
@@ -27,6 +35,8 @@ const AddComment = () => {
 			}
 			await addDoc(collectionRef, payload)
 			setPost('')
+			setError(null)
+			setLoading(false)
 		} catch (err) {
 			console.error('Error adding document: ', err)
 		}
@@ -46,7 +56,8 @@ const AddComment = () => {
 				onChange={handleChange}
 				value={post}
 				/>
-				<button type="submit">Post</button>
+				{ error && <span className="text-red">{error}</span> }
+				<button type="submit" disabled={loading}>Post</button>
 			</form>
 		</div>
 	);
