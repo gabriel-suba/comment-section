@@ -1,7 +1,7 @@
 nav {
 	width: 100%;
 	min-height: 10vh;
-	background-color: var(--neutral-dblue);
+	background-color: var(--neutral-gblue);
 	color: var(--neutral-white);
 
 	display: flex;
