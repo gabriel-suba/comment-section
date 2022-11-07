@@ -167,6 +167,10 @@
 	background-color: var(--primary-lgblue);
 }
 
+.content-paragraph {
+	white-space: pre-line;
+}
+
 @media screen and (max-width: 640px) {
 	.comment {
 		flex-direction: column-reverse;

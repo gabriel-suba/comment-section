@@ -174,7 +174,7 @@ const Comment = ({ post, handleOpenModal }) => {
 					</form>
 					:
 					<div className="paragraph">
-						<p className="text-gray">{post.content}</p>
+						<p className="text-gray content-paragraph">{post.content}</p>
 					</div>
 					}
 

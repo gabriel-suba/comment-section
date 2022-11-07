@@ -162,7 +162,7 @@ const Reply = ({ reply, commentId, handleOpenModal }) => {
 					:
 					<div className="paragraph">
 						<p className="text-gray">
-							<span className="replyingTo">@{reply.replyingTo}</span>
+							<span className="replyingTo content-paragraph">@{reply.replyingTo}</span>
 							{reply.content}
 						</p>
 					</div>

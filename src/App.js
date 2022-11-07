@@ -22,7 +22,6 @@ const App = () => {
 	
 	return (
 		<div className="App">
-			<Nav />
 			<Modal ref={modalRef} selected={selected} setSelected={setSelected} />
 			<main className="container">
 				<Comments handleOpenModal={handleOpenModal} />

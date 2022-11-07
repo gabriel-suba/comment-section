@@ -29,7 +29,7 @@ const Login = () => {
 
 			if (success) {
 				// update user's username and photo url immidiately after sign up
-				const dicebearURL = `https://avatars.dicebear.com/api/avataaars/${Date.now()}.svg`
+				const dicebearURL = `https://avatars.dicebear.com/api/open-peeps/${Date.now()}.svg`
 				const updatePayload = { displayName: userDetails.username, photoURL: dicebearURL }
 
 				// reload user's auth to force re-render user's state
