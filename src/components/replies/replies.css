@@ -42,6 +42,7 @@
 	font-size: 0.88rem;
 	font-weight: 500;
 
+	transition: all 0.25s ease;
 	cursor: pointer;
 }
 

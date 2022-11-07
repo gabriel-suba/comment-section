@@ -25,6 +25,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding: 1rem 0;
 
 	font-family: 'Rubik', sans-serif;
 	font-size: 16px;
@@ -34,6 +35,10 @@
 
 main {
 	margin: 2rem 0;
+}
+
+ul {
+	list-style-type: none;
 }
 
 .text-purple {
@@ -73,4 +78,18 @@ main {
 
 .styled-textarea:focus {
 	border: 1px solid var(--primary-mblue);
+}
+
+.logout-btn {
+	text-align: right;
+	gap: 0.5rem;
+	color: var(--neutral-dblue);
+
+	transition: all 0.25s ease;
+	user-select: none;
+}
+
+.logout-btn:hover {
+	color: var(--neutral-gblue);
+	cursor: pointer;
 }
